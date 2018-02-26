@@ -24,22 +24,18 @@ public class PercolationStats {
         for (int i = 0; i < trials; i++){
             int openSite = 0;
             Percolation percolation = new Percolation(n);
-       //     while (percolation.percolates() != true){
-        //        openSite = StdRandom.uniform(n*n);
-         //       row = (openSite-(openSite%n))/n + 1;
-          //      col = (openSite%n) + 1;
-            //    if(!percolation.isOpen(row,col))
-            //        percolation.open(row, col);
-           // }
+            while (percolation.percolates() != true){
+                openSite = StdRandom.uniform(n*n);
+                row = (openSite-(openSite%n))/n + 1;
+                col = (openSite%n) + 1;
+                if(!percolation.isOpen(row,col))
+                    percolation.open(row, col);
+        }
             totalOpenedSites[i] = percolation.numberOfOpenSites();
         }
-//        System.out.println("Mean                    = " + mean());
-//        System.out.println("stddev                  = " + stddev());
-//        System.out.println("95% confidence interval = [" + confidenceLo() + ", " + confidenceHi() + "]");
-//        mean();
-//        stddev();
-//        confidenceLo();
-//        confidenceHi();
+        System.out.println("Mean                    = " + mean());
+        System.out.println("stddev                  = " + stddev());
+        System.out.println("95% confidence interval = [" + confidenceLo() + ", " + confidenceHi() + "]");
     }
     public double mean()                          // sample mean of percolation threshold
     {
@@ -64,8 +60,8 @@ public class PercolationStats {
 
     public static void main(String[] args)        // test client (described below)
     {
-        int n = Integer.parseInt(args[0]);
-        int trials = Integer.parseInt(args[1]);
+        int n = 10;
+        int trials = 50000;
         PercolationStats perco = new PercolationStats(n, trials);
     }
 }
