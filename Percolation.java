@@ -1,7 +1,5 @@
-import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.StdRandom;
-import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation{
 
@@ -17,8 +15,7 @@ public class Percolation{
     public Percolation(int nGrid)                // create n-by-n grid, with all sites blocked
     {
         if (n <= 0) {
-            return;
- //           throw new IllegalArgumentException();
+            throw new IllegalArgumentException();
         }
 
         n = nGrid;
@@ -43,8 +40,7 @@ public class Percolation{
     public void open(int row, int col)    // open site (row, col) if it is not open already
     {
         if (row > n || col > n || row <= 0 || col <= 0) {
-      //      throw new IllegalArgumentException();
-            return;
+            throw new IllegalArgumentException();
         }
         int site = (n*(row-1) + col -1);
         if(sites[site] == 1)
@@ -146,8 +142,6 @@ public class Percolation{
 
     public static void main(String[] args) // test client (optional)
     {
-        int n = Integer.parseInt(args[0]);
-        int trials = Integer.parseInt(args[1]);
-        PercolationStats perco = new PercolationStats(n, trials);
+
     }
 }
